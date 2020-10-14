@@ -15,5 +15,4 @@ services:
       - ./data/postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
-    user: 1000:100
     
