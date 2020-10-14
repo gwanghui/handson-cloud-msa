@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  redis:
+    image: sds.redii.net/rai/redis:5.0-alpine
+    ports:
+      - "6379:6379"
+
+  postgres:
+    image: sds.redii.net/rai/postgres:13
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+    user: 1000:100
+    
