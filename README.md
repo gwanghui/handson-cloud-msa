@@ -8,7 +8,7 @@ Cloud/MSA 실습
 서비스에서 저장소로 사용하는 postgreSQL과 redis를 docker-compose로 기동합니다. 
 
 ``` bash
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 ### postgreSQL 초기 설정
