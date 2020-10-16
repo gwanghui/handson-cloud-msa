@@ -3,6 +3,7 @@ version: "3"
 services:
   redis:
     image: sds.redii.net/rai/redis:5.0-alpine
+    restart: always
     ports:
       - "6379:6379"
 
