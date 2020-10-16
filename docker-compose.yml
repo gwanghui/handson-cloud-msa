@@ -16,4 +16,4 @@ services:
       - ./data/postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
-    
+    container_name: handson-cloud-msa_postgres
