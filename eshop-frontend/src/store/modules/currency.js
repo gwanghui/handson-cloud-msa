@@ -10,6 +10,8 @@ export default {
       currencies: state => Object.keys(state.currencies),
       userCurrency: state => state.userCurrency,
       renderMoney: state => (money) => {
+        if(!money || !money.units ) return state.userCurrency + " 0.0"
+
         var convertedUnits = Math.round(money.units / state.currencies[money.currencyCode] * state.currencies[state.userCurrency])
         if(money.nanos) {
           var convertedNanos = Math.round(money.nanos / state.currencies[money.currencyCode] * state.currencies[state.userCurrency])
