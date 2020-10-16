@@ -18,7 +18,7 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @PostMapping(value = "/carts/empty")
+    @PostMapping(value = "/empty")
     public ResponseEntity<Void> emptyCart() {
         cartService.emptyCart();
         return ResponseEntity.ok().build();
@@ -36,7 +36,7 @@ public class CartController {
         return ResponseEntity.ok(cartItems);
     }
 
-    @GetMapping(value = "/carts/count")
+    @GetMapping(value = "/count")
     public ResponseEntity<Long> getCartItemsCount() {
         Long cartItemCount = cartService.getCartItemsCount();
         return ResponseEntity.ok(cartItemCount);

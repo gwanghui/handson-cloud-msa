@@ -65,12 +65,12 @@ export default {
   },
   methods: {
     ...mapActions('product', ['fetchProduct']),
-    addToCart() {
+    async addToCart() {
       this.$store.dispatch('cart/addToCart', {
         id: this.product.id,
         quantity: this.quantity
       })
-      this.$router.push("/cart")
+      // await this.$router.push("/cart")
     },
   }
 }

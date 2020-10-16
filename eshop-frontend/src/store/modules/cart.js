@@ -1,4 +1,6 @@
 import axios from 'axios'
+// import product from './product'
+import router from '@/router/index.js'
 
 export default {
     namespaced: true,
@@ -85,10 +87,12 @@ export default {
       emptyCart(state) {
         state.items = [] 
       },
-      addToCart(state, cartItem) {
-        state.items.push(cartItem)
+      async addToCart(state, cartItem) {
+        await state.items.push(cartItem)
+        router.push("/cart")
       },
       setCartItems(state, cartItems) {
+        cartItems.map(cartItems => cartItems.product.picture = process.env.VUE_APP_BASE_URL + cartItems.product.picture) 
         state.items = cartItems
       },
       setShippingCost(state, shippingCost) {
