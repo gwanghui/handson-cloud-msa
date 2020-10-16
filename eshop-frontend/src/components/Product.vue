@@ -32,7 +32,7 @@ export default {
   },
   computed: mapGetters({
     renderMoney: 'currency/renderMoney'
-  }),
+  })
 }
 </script>
 

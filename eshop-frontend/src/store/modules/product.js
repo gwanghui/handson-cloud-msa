@@ -29,9 +29,12 @@ export default {
     },
     mutations: {
       setProducts(state, products) {
-        state.products = products 
+        // 이미지 주소에 서버 url을 더하자.
+        products.map(product => product.picture = process.env.VUE_APP_BASE_URL + product.picture) 
+        state.products = products
       },
       setCurrentProduct(state, product) {
+        product.picture = process.env.VUE_APP_BASE_URL + product.picture
         state.currentProduct = product 
       }
     }
