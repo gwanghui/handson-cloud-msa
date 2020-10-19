@@ -20,7 +20,7 @@ $ docker-compose up -d
 먼저 postgres 컨테이너의 bash를 실행합니다.
 
 ``` bash
-$ docker exec -it {{postgres container 이름}} bash
+$ docker exec -it handson-cloud-msa_postgres bash
 ```
 
 psql 명령어를 사용하여 postgres에 접속합니다.
