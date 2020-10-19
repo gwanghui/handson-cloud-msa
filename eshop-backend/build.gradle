@@ -24,20 +24,12 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'    
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    // implementation 'mysql:mysql-connector-java'
     implementation 'org.postgresql:postgresql'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'    
     implementation 'com.google.guava:guava:28.2-jre'
 
-	//for jaeger tracing
-	implementation 'io.opentracing.contrib:opentracing-spring-jaeger-cloud-starter:3.1.2'
-
-    //for nats
-    implementation 'io.nats:jnats:2.6.8'
-    implementation 'io.nats:nats-spring:0.4.0'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

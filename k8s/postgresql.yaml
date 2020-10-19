@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: sds.redii.net/rai/postgres:13
+        env:
+          - name: POSTGRES_USER
+            value: eshop_user
+          - name: POSTGRES_DB
+            value: eshop_db
+          - name: POSTGRES_PASSWORD
+            value: password
+        ports:
+        - containerPort: 5432
+        readinessProbe:
+          periodSeconds: 5
+          tcpSocket:
+            port: 5432
+        livenessProbe:
+          periodSeconds: 5
+          tcpSocket:
+            port: 5432
+        volumeMounts:
+        - mountPath: /data
+          name: postgres-data
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 500m
+          requests:
+            cpu: 300m
+            memory: 384Mi
+      volumes:
+      - name: postgres-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  type: ClusterIP
+  selector:
+    app: postgres
+  ports:
+  - port: 5432

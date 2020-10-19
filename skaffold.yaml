@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta8
+kind: Config
+build:
+  artifacts:
+    - image: eshop-backend
+      context: eshop-backend
+      jib: {}
+    - image: eshop-frontend
+      context: eshop-frontend
+      docker:
+        buildArgs:
+          HTTP_PROXY: http://70.10.15.10:8080
+          HTTPS_PROXY: http://70.10.15.10:8080
+deploy:
+  kubectl:
+    manifests:
+      - k8s/**.yaml

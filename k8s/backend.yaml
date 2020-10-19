@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-backend
+spec:
+  selector:
+    matchLabels:
+      app: eshop-backend
+  template:
+    metadata:
+      labels:
+        app: eshop-backend
+    spec:
+      containers:
+        - name: eshop-backend
+          image: eshop-backend
+          ports:
+          - containerPort: 8090
+          env:
+            - name: SPRING_REDIS_HOST
+              value: redis
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/eshop_db"
+          resources:
+            requests:
+              cpu: 500m
+              memory: 384Mi
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: eshop-backend
+  ports:
+  - port: 8090
