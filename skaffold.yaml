@@ -11,6 +11,7 @@ build:
         buildArgs:
           HTTP_PROXY: http://70.10.15.10:8080
           HTTPS_PROXY: http://70.10.15.10:8080
+          VUE_APP_BASE_URL: http://localhost:8090
 deploy:
   kubectl:
     manifests:
