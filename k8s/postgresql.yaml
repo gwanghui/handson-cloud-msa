@@ -32,8 +32,8 @@ spec:
           tcpSocket:
             port: 5432
         volumeMounts:
-        - mountPath: /data
-          name: postgres-data
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/db-data
         resources:
           limits:
             memory: 512Mi
@@ -42,8 +42,9 @@ spec:
             cpu: 300m
             memory: 384Mi
       volumes:
-      - name: postgres-data
-        emptyDir: {}
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
 ---
 apiVersion: v1
 kind: Service
