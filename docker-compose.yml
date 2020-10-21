@@ -15,5 +15,7 @@ services:
     volumes:
       - ./data/postgres/data:/var/lib/postgresql/data
     environment:
+      - POSTGRES_DB=eshop_db
+      - POSTGRES_USER=eshop_user
       - POSTGRES_PASSWORD=password
     container_name: handson-cloud-msa_postgres
