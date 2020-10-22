@@ -3,11 +3,14 @@ Cloud/MSA 실습
 
 ## 실행하기
 
-### Skaffold 실행
+### tilt 실행
 ``` bash
-$ skaffold dev --port-forward
+$ tilt up
 ```
 
 ### 종료
 
-Ctrl + C 눌러서 clean up
+Ctrl + C 눌러서 종료 후
+``` bash
+$ tilt down
+```
