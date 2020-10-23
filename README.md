@@ -5,7 +5,7 @@ Cloud/MSA 실습
 
 ### Skaffold 실행
 ``` bash
-$ skaffold dev --port-forward
+$ skaffold dev
 ```
 
 ### 종료
