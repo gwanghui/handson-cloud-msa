@@ -22,13 +22,6 @@ public class ProductService {
 
   public Products fetchProductsByIds(final String[] ids) {
     return new Products(Iterables.toArray(productRepository.findAllByIdIn(ids), Product.class));
-    // Product[] products = this.fetchProducts().getProducts();
-    // Product[] cartProducts = Stream.of(products).filter(product -> {
-    //   return Arrays.stream(ids).anyMatch(product.getId()::equals);
-    // }).toArray(Product[]::new);
-    // Products result = new Products();
-    // result.setProducts(cartProducts);
-    // return result;
   }
 
 }
