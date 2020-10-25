@@ -2,6 +2,9 @@ apiVersion: skaffold/v2beta8
 kind: Config
 build:
   artifacts:
+    - image: eshop-cartservice
+      context: eshop-cartservice
+      jib: {}
     - image: eshop-backend
       context: eshop-backend
       jib: {}

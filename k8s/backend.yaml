@@ -17,8 +17,8 @@ spec:
           ports:
           - containerPort: 8090
           env:
-            - name: SPRING_REDIS_HOST
-              value: redis
+            - name: URL_CARTSERVICE
+              value: http://eshop-cartservice:8091
             - name: SPRING_DATASOURCE_URL
               value: "jdbc:postgresql://postgres:5432/eshop_db"
           resources:
