@@ -11,11 +11,11 @@ spec:
   - host: localhost
     http:
       paths:
-      - path: /(.*)
+      - path: /?(.*)
         backend:
           serviceName: eshop-frontend
           servicePort: 8080
-      - path: /api/(.*)
+      - path: /api/?(.*)
         backend:
           serviceName: eshop-backend
           servicePort: 8090
