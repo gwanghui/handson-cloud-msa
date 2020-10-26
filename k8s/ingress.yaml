@@ -27,3 +27,7 @@ spec:
         backend:
           serviceName: eshop-productservice
           servicePort: 8092
+      - path: /api/recommends/?(.*)
+        backend:
+          serviceName: eshop-recommendservice
+          servicePort: 8093
