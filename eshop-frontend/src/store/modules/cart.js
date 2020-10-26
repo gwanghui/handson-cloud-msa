@@ -88,6 +88,7 @@ export default {
         state.items = [] 
       },
       async addToCart(state, cartItem) {
+        cartItem.product.picture = process.env.VUE_APP_BASE_URL + cartItem.product.picture
         await state.items.push(cartItem)
         router.push("/cart")
       },
