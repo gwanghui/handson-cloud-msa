@@ -2,30 +2,14 @@ package com.samsungsds.eshop.product;
 
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-
 import com.samsungsds.eshop.payment.Money;
 
-@Entity
 public class Product {
-    @Id
     private String id;
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
     private String description;
-    @Column(nullable = false)
     private String picture;
-    @Column(nullable = false)
     private Money priceUsd;
-    @ElementCollection
-    @CollectionTable(name="product_category", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name="category")
     private Set<String> categories;
 
     public String getId() {

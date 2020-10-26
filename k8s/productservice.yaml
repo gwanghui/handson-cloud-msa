@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-productservice
+spec:
+  selector:
+    matchLabels:
+      app: eshop-productservice
+  template:
+    metadata:
+      labels:
+        app: eshop-productservice
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: eshop-productservice
+        image: eshop-productservice
+        ports:
+        - containerPort: 8092
+        env:
+        - name: PORT
+          value: "8092"
+        - name: MONGO_URI
+          value: "mongodb://admin:password@mongodb"
+        - name: INIT_DATA
+          value: "true"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-productservice
+spec:
+  type: ClusterIP
+  selector:
+    app: eshop-productservice
+  ports:
+  - name: api
+    port: 8092
+    targetPort: 8092

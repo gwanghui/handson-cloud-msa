@@ -23,3 +23,7 @@ spec:
         backend:
           serviceName: eshop-cartservice
           servicePort: 8091
+      - path: /api/products/?(.*)
+        backend:
+          serviceName: eshop-productservice
+          servicePort: 8092
