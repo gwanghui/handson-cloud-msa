@@ -19,9 +19,6 @@ public class CurrencyService {
     this.currencyRepository = currencyRepository;
   }
 
-  @Value("classpath:data/currency_conversion.json")
-  Resource resourceFile;
-
   public Map<String, Double> fetchCurrency() {
     Map<String, Double> currencyMap = Maps.newHashMap();
     currencyRepository.findAll().forEach(currency -> currencyMap.put(currency.getCurrencyCode(), currency.getCurrencyValue()));
