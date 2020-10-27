@@ -20,6 +20,9 @@ build:
         buildArgs:
           HTTP_PROXY: http://70.10.15.10:8080
           HTTPS_PROXY: http://70.10.15.10:8080
+    - image: eshop-adservice
+      context: eshop-adservice
+      jib: {}
     - image: eshop-cartservice
       context: eshop-cartservice
       jib: {}

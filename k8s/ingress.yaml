@@ -35,3 +35,7 @@ spec:
         backend:
           serviceName: eshop-currencyservice
           servicePort: 8094
+      - path: /api/ads/?(.*)
+        backend:
+          serviceName: eshop-adservice
+          servicePort: 8095
