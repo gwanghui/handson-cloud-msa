@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: sds.redii.net/rai/postgres:13
+        image: postgres:13
         env:
           - name: POSTGRES_USER
             value: eshop_user

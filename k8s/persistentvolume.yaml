@@ -9,11 +9,11 @@ metadata:
 spec:
   storageClassName: hostpath
   capacity:
-    storage: 5Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "./data/postgres/data2"
+    path: "./data/postgres/data"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,5 +25,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi
 ---

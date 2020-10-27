@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: sds.redii.net/rai/redis:5.0-alpine
+        image: redis:5.0-alpine
         ports:
         - containerPort: 6379
         readinessProbe:

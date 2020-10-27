@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eshop-currencyservice
+spec:
+  selector:
+    matchLabels:
+      app: eshop-currencyservice
+  template:
+    metadata:
+      labels:
+        app: eshop-currencyservice
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: eshop-currencyservice
+        image: eshop-currencyservice
+        ports:
+        - containerPort: 8094
+        env:
+        - name: PORT
+          value: "8094"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eshop-currencyservice
+spec:
+  type: ClusterIP
+  selector:
+    app: eshop-currencyservice
+  ports:
+  - name: api
+    port: 8094
+    targetPort: 8094

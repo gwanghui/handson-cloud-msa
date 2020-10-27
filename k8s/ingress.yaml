@@ -31,3 +31,7 @@ spec:
         backend:
           serviceName: eshop-recommendservice
           servicePort: 8093
+      - path: /api/currencies/?(.*)
+        backend:
+          serviceName: eshop-currencyservice
+          servicePort: 8094
