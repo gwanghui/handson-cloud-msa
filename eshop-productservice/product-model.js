@@ -16,16 +16,17 @@ const ProductSchema = new mongoose.Schema({
   name: String,
   description: String,
   picture: String,
-  categories: [{ type: String, }],
+  categories: [{ type: String }],
   priceUsd: MoneySchema,
 });
-ProductSchema.statics.initProduct = (Product) => {
-  Product.deleteMany({});
-  data.products.forEach((product) => {
-    Product.create(product);
-  });
+ProductSchema.statics.initProduct = async (Product) => {
+  const count = await Product.countDocuments({});
+  if (count == 0) {
+    data.products.forEach((product) => {
+      Product.create(product);
+    });
+  }
 };
-
 
 Product = mongoose.model("Product", ProductSchema);
 module.exports = Product;
