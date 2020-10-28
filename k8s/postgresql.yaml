@@ -23,28 +23,6 @@ spec:
             value: password
         ports:
         - containerPort: 5432
-        readinessProbe:
-          periodSeconds: 5
-          tcpSocket:
-            port: 5432
-        livenessProbe:
-          periodSeconds: 5
-          tcpSocket:
-            port: 5432
-        volumeMounts:
-        - name: postgres-storage
-          mountPath: /var/lib/postgresql/db-data
-        resources:
-          limits:
-            memory: 512Mi
-            cpu: 500m
-          requests:
-            cpu: 300m
-            memory: 384Mi
-      volumes:
-      - name: postgres-storage
-        persistentVolumeClaim:
-          claimName: postgres-pv-claim
 ---
 apiVersion: v1
 kind: Service
