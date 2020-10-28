@@ -19,6 +19,8 @@ spec:
           env:
             - name: SPRING_REDIS_HOST
               value: redis
+            - name: NATS_SPRING_SERVER
+              value: "nats://nats-cluster:4222"
 ---
 apiVersion: v1
 kind: Service

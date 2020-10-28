@@ -27,6 +27,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'    
     implementation 'com.google.guava:guava:28.2-jre'
+    implementation 'io.nats:jnats:2.6.8'
+    implementation 'io.nats:nats-spring:0.4.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
