@@ -19,7 +19,7 @@ configurations {
 repositories {
 	maven { url "http://70.121.224.52:8081/nexus/content/repositories/jitpack/" }
 	maven { url "http://70.121.224.52:8081/nexus/content/repositories/spring-libs-release/" }
-    // mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
