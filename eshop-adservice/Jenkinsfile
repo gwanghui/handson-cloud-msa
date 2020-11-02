@@ -20,7 +20,9 @@ spec:
   stages {
     stage('build and push docker image') {
       steps {
-        sh 'gradle jibDockerBuild'
+        container('gradle') {
+          sh 'cd eshop-adservice && gradle jibDockerBuild'
+        }
       }
     }
   }
