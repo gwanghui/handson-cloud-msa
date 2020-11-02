@@ -1,9 +1,11 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'gradle:6.3.0-jdk11'}
+  }
   stages {
     stage('build and push docker image') {
       steps {
-        sh './eshop-adservice/gradlew jibDockerBuild'
+        sh 'gradle jibDockerBuild'
       }
     }
   }
