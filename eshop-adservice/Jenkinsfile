@@ -1,6 +1,21 @@
 pipeline {
   agent {
-    docker { image 'gradle:6.3.0-jdk11'}
+    kubernetes {
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: gradle
+spec:
+  containers:
+  - name: gradle
+    image: gradle:6.3.0-jdk11
+    command:
+    - cat
+    tty: true
+"""      
+    }
   }
   stages {
     stage('build and push docker image') {
