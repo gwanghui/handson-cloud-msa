@@ -21,7 +21,7 @@ spec:
     stage('build and push docker image') {
       steps {
         container('gradle') {
-          sh 'cd eshop-adservice && gradle jibDockerBuild'
+          sh 'cd eshop-adservice && gradle jib --image gcr.io/architect-certification-289902/adservice'
         }
       }
     }
