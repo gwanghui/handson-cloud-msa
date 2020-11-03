@@ -24,7 +24,7 @@ spec:
     stage('build docker image') {
       steps {
         container('docker') {
-          dir('eshop-currentservice') {
+          dir('eshop-currencyservice') {
             sh 'docker image build -t gcr.io/$PROJECT_ID/eshop-currencyservice:$BUILD_ID .'
           }
         }
@@ -34,7 +34,7 @@ spec:
     stage('push docker image') {
       steps {
         container('docker') {
-          dir('eshop-currentservice') {
+          dir('eshop-currencyservice') {
             withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr-credential"]) {
             // withCredentials([file(credentialsId: 'gcr-credential', variable: 'GCR_CREDENTIAL_JSON')]) {
               sh 'docker image push gcr.io/$PROJECT_ID/eshop-cartservice:$BUILD_ID'
