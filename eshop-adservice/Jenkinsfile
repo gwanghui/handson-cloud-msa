@@ -14,6 +14,11 @@ spec:
     command:
     - cat
     tty: true
+  - name: docker
+    image: docker
+    command:
+    - cat
+    tty: true
 """      
     }
   }
@@ -21,7 +26,9 @@ spec:
     stage('build and push docker image') {
       steps {
         container('gradle') {
-          sh 'cd eshop-adservice && gradle jib --image gcr.io/architect-certification-289902/adservice --no-daemon'
+          withDockerRegistry([ credentialsId: "architect-certification-289902", url: "https://gcr.io"]) {
+            sh 'cd eshop-adservice && gradle jib --image gcr.io/architect-certification-289902/adservice --no-daemon'
+          }
         }
       }
     }
