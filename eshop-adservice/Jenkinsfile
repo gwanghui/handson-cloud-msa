@@ -26,7 +26,7 @@ spec:
     stage('build and push docker image') {
       steps {
         container('gradle') {
-          withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr:architect-certification-289902"]) {
+          withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr"]) {
             sh 'cd eshop-adservice && gradle jib --image gcr.io/architect-certification-289902/adservice --no-daemon'
           }
         }
