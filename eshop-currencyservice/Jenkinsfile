@@ -47,7 +47,7 @@ spec:
           dir('eshop-currencyservice') {
             // withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr-credential"]) {
             withCredentials([file(credentialsId: 'gcr-credential', variable: 'GCR_CREDENTIAL_JSON')]) {
-              sh 'docker login -u _json_key -p "$( cat $GCR_CREDENTIAL_JSON )"'
+              sh 'docker login gcr.io -u _json_key -p "$( cat $GCR_CREDENTIAL_JSON )"'
               sh 'docker image push gcr.io/$PROJECT_ID/eshop-currencyservice:$BUILD_ID'
             }
           }
