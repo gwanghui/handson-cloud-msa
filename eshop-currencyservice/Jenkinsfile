@@ -17,13 +17,23 @@ spec:
     command:
     - cat
     tty: true
+  - name: dind
+    image: docker:18.05-dind
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: dind-storage
+        mountPath: /var/lib/docker
+  volumes:
+    - name: dind-storage
+      emptyDir: {}
 """      
     }
   }
   stages {
     stage('build docker image') {
       steps {
-        container('docker') {
+        container('dind') {
           dir('eshop-currencyservice') {
             sh 'docker image build -t gcr.io/$PROJECT_ID/eshop-currencyservice:$BUILD_ID .'
           }
@@ -33,7 +43,7 @@ spec:
 
     stage('push docker image') {
       steps {
-        container('docker') {
+        container('dind') {
           dir('eshop-currencyservice') {
             withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr-credential"]) {
             // withCredentials([file(credentialsId: 'gcr-credential', variable: 'GCR_CREDENTIAL_JSON')]) {
