@@ -26,7 +26,7 @@ spec:
         container('gradle') {
           dir('eshop-adservice') {
             withCredentials([file(credentialsId: 'gcr-credential', variable: 'GCR_CREDENTIAL_JSON')]) {
-              sh 'gradle jib --no-daemon --image "gcr.io/${env.PROJECT_ID}/adservice:${env.BUILD_ID}" -Djib.to.auth.username="_json_key" -Djib.to.auth.password="$( cat $GCR_CREDENTIAL_JSON )"'
+              sh 'gradle jib --no-daemon --image "gcr.io/${PROJECT_ID}/adservice:${env.BUILD_ID}" -Djib.to.auth.username="_json_key" -Djib.to.auth.password="$( cat $GCR_CREDENTIAL_JSON )"'
             }
           }
         }
