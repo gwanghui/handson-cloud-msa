@@ -1,0 +1,43 @@
+pipeline {
+  environment {
+    PROJECT_ID = 'architect-certification-289902'
+  }
+  agent {
+    kubernetes {
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: docker
+spec:
+  containers:
+  - name: docker
+    image: docker
+    command:
+    - cat
+    tty: true
+"""      
+    }
+  }
+  stages {
+    stage('build docker image') {
+      container('docker') {
+        dir('eshop-currentservice') {
+          sh 'docker image build -t gcr.io/$PROJECT_ID/eshop-currencyservice:$BUILD_ID .'
+        }
+      }
+    }
+
+    stage('push docker image') {
+      container('docker') {
+        dir('eshop-currentservice') {
+          withDockerRegistry([url:"https://gcr.io", credentialsId: "gcr-credential"]) {
+          // withCredentials([file(credentialsId: 'gcr-credential', variable: 'GCR_CREDENTIAL_JSON')]) {
+            sh 'docker image push gcr.io/$PROJECT_ID/eshop-cartservice:$BUILD_ID'
+          }
+        }
+      }
+    }
+  }
+}
